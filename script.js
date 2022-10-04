@@ -29,27 +29,24 @@ function getComputerChoice() {
 // }
 
 function playRound(user, comp) {
+    let decla;
     switch(true) {
+        case (user === 'rock' && comp === 'rock') || (user === 'paper' && comp === 'paper') || (user === 'scissor' && comp === 'scissor'):
+            return decla = 'It\'s a tie!';
         case (user === 'rock' && comp === 'scissor'):
-            console.log('You Win! Rock beats Scissor!');
-            break;
+            return decla = 'You Win! Rock beats Scissor!';
         case (user === 'paper' && comp === 'rock'):
-            console.log('You Win! Paper beats Rock!');
-            break;   
+            return decla = 'You Win! Paper beats Rock!';
         case (user === 'scissor' && comp === 'paper'):
-            console.log('You Win! Scissor beats Paper!');
-            break;   
+            return decla = 'You Win! Scissor beats Paper!'; 
         case (user === 'scissor' && comp === 'rock'):
-            console.log('You Lose! Rock beats Scissor!');
-            break;   
+            return decla = 'You Lose! Rock beats Scissor!';   
         case (user === 'rock' && comp === 'paper'):
-            console.log('You Lose! Paper beats Rock!');
-            break;   
+            return decla = 'You Lose! Paper beats Rock!';   
         case (user === 'paper' && comp === 'scissor'):
-            console.log('You Lose! Paper beats Scissor!');
-            break;  
+            return decla = 'You Lose! Paper beats Scissor!';
         default:
-            console.log('It\'s a tie!');
+            console.log('Invalid Entry!');
     }
 }
 
@@ -58,4 +55,4 @@ playerSelection = playerSelection.toLowerCase();
 console.log('User: ' + playerSelection);
 let compSelection = getComputerChoice();
 compSelection = compSelection.toLowerCase();
-playRound(playerSelection, compSelection);
+console.log(playRound(playerSelection, compSelection));
