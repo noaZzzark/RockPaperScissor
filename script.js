@@ -27,30 +27,61 @@ function playRound(user, comp) {
         case (user === 'paper' && comp === 'scissor'):
             return 'You Lose! Scissor beats Paper!';
         default:
-            console.log('Invalid Entry!');
+            return 'Invalid Entry!';
     }
 }
 
 function game() {
-    let userScore = 0;
-    let compScore = 0;
     for (let i = 0; i < 5; i++) {
-        playRound();
-        if (playRound() === 'It\'s a tie!') {
-            userScore = userScore;
-            compScore = compScore;
+        let playerSelection = prompt('Enter your choice: Rock, Paper or Scissor');
+        playerSelection = playerSelection.toLowerCase();
+        console.log('User: ' + playerSelection);
+
+        let compSelection = getComputerChoice();
+        compSelection = compSelection.toLowerCase();
+        console.log('Comp: ' + compSelection);
+
+        resultRound = playRound(playerSelection, compSelection);
+        switch (resultRound) {
+            case 'You Win! Rock beats Scissor!':
+            case 'You Win! Paper beats Rock!':
+            case 'You Win! Scissor beats Paper!':
+                console.log('User: ' + ++userScore);
+                console.log('Comp: ' + compScore);
+                console.log(resultRound);
+                break;
+            case 'You Lose! Rock beats Scissor!':
+            case 'You Lose! Paper beats Rock!':
+            case 'You Lose! Scissor beats Paper!':
+                console.log('User: ' + userScore);
+                console.log('Comp: ' + ++compScore);
+                console.log(resultRound);
+                break;
+            case 'It\'s a tie!':
+            case 'Invalid Entry!':
+                console.log('User: ' + userScore);
+                console.log('Comp: ' + compScore);
+                console.log(resultRound);
+                break;
         }
+
+        console.log('--------------------------------------------------------------');
+
     }
 }
 
+function winner() {
+    if (userScore > compScore) {
+        console.log('Congrats! You Win!');
+    }else if (userScore === compScore) {
+        console.log('Its a Tie! Rematch!');
+    }else
+        console.log('You Lose to a Computer?! Heck!');
+}
 
-let playerSelection = prompt('Enter your choice: Rock, Paper or Scissor');
-playerSelection = playerSelection.toLowerCase();
-console.log('User: ' + playerSelection);
+let userScore = 0;
+let compScore = 0;
 
-let compSelection = getComputerChoice();
-compSelection = compSelection.toLowerCase();
-console.log('Comp: ' + compSelection);
+game();
+winner();
 
-
-console.log(playRound(playerSelection, compSelection));
