@@ -58,19 +58,17 @@ function game() {
                 console.log(resultRound);
                 break;
             case 'It\'s a tie!':
-            case 'Invalid Entry!':
                 console.log('User: ' + userScore);
                 console.log('Comp: ' + compScore);
                 console.log(resultRound);
                 break;
+            default:
+                console.log(resultRound);
         }
 
         console.log('--------------------------------------------------------------');
 
     }
-}
-
-function winner() {
     if (userScore > compScore) {
         console.log('Congrats! You Win!');
     }else if (userScore === compScore) {
@@ -83,5 +81,5 @@ let userScore = 0;
 let compScore = 0;
 
 game();
-winner();
+
 
